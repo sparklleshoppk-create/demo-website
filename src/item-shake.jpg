@@ -1,0 +1,22 @@
+import burger from "@/assets/item-burger.jpg";
+import wrap from "@/assets/item-wrap.jpg";
+import fries from "@/assets/item-fries.jpg";
+import shake from "@/assets/item-shake.jpg";
+import wings from "@/assets/item-wings.jpg";
+import deal from "@/assets/item-deal.jpg";
+
+export function fallbackImageFor(opts: { name?: string | null; categorySlug?: string | null }) {
+  const name = (opts.name || "").toLowerCase();
+  if (name.includes("wing")) return wings;
+  if (name.includes("fries") || name.includes("side")) return fries;
+  if (name.includes("shake") || name.includes("drink") || name.includes("cola") || name.includes("pepsi")) return shake;
+  if (name.includes("wrap")) return wrap;
+  if (name.includes("deal") || name.includes("box") || name.includes("feast") || name.includes("combo")) return deal;
+  switch (opts.categorySlug) {
+    case "wraps": return wrap;
+    case "sides": return fries;
+    case "drinks": return shake;
+    case "deals": return deal;
+    default: return burger;
+  }
+}

@@ -1,0 +1,13 @@
+export const formatPKR = (v: number) =>
+  `Rs. ${Math.round(v).toLocaleString("en-PK")}`;
+
+export const slugFallbackImage = (slug?: string | null) => {
+  switch (slug) {
+    case "burgers": return "/img-burger";
+    case "wraps": return "/img-wrap";
+    case "sides": return "/img-fries";
+    case "drinks": return "/img-shake";
+    case "deals": return "/img-deal";
+    default: return "/img-burger";
+  }
+};
